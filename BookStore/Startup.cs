@@ -40,7 +40,7 @@ namespace BookStore
 
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
-            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
 
             services.AddHttpContextAccessor();
 

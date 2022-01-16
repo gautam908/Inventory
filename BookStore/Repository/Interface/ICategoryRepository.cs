@@ -9,11 +9,11 @@ namespace BookStore.Repository
 {
     public interface ICategoryRepository 
     {
-        void FindCategory(Expression<Func<Category, bool>> predicate = null);
-        void FindAllCategory(Expression<Func<Category, bool>> predicate = null);
-        void AddCategory(Category addrequest);
-        void UpdateCategory(Category addrequest);
-        Task<bool> DeleteCategory(int categoryid);
+        Task<Category> FindCategory(Category addrequest);
+        Task<List<Category>> FindAllCategory(List<Category> addrequest);
+        Task<Category> AddCategory(Category addrequest);
         void AddListOfCategory(List<Category> addrequest);
+        Task<List<Category>> UpdateCategory(List<Category> addrequest);
+        Task<bool> DeleteCategory(int categoryid);
     }
 }

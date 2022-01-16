@@ -33,18 +33,6 @@ namespace BookStore.Repository
 
 
 
-        public void AddCategory(Category addrequest)
-        {
-            try
-            {
-                _categoryRepository.InsertOneAsync(addrequest);
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
-
         public void AddListOfCategory(List<Category> addrequest)
         {
             try
@@ -58,6 +46,19 @@ namespace BookStore.Repository
             }
         }
 
+        public async Task<Category> AddCategory(Category addrequest)
+        {
+            try
+            {
+                await _categoryRepository.InsertOneAsync(addrequest);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return (addrequest);
+        }
+
         public async Task<bool> DeleteCategory(int categoryid)
         {
             try
@@ -66,44 +67,50 @@ namespace BookStore.Repository
             }
             catch (Exception ex)
             {
-              throw;
+
+                throw;
             }
         }
 
-        public  void FindAllCategory(Expression<Func<Category, bool>> predicate = null)
+        public async Task<List<Category>> FindAllCategory(List<Category> addrequest)
         {
             try
             {
-                 _categoryRepository.f(predicate);
+                await _categoryRepository.InsertManyAsync(addrequest);
             }
             catch (Exception ex)
             {
                 throw;
             }
+            return (addrequest);
         }
 
-        public void FindCategory(Expression<Func<Category, bool>> predicate = null)
+        public async Task<Category> FindCategory(Category addrequest)
         {
             try
             {
-                 _categoryRepository.FindAsync(predicate);
+                await _categoryRepository.InsertOneAsync(addrequest);
             }
             catch (Exception ex)
             {
+
                 throw;
             }
+            return (addrequest);
         }
 
-        public void UpdateCategory(Expression<Func<Category, bool>> predicate = null)
+        public async Task<List<Category>> UpdateCategory(List<Category> addrequest)
         {
             try
             {
-               _categoryRepository.UpdateOneAsync(predicate);
+                await _categoryRepository.InsertManyAsync(addrequest);
             }
             catch (Exception ex)
             {
+
                 throw;
             }
+            return (addrequest);
         }
     }
 }

@@ -9,11 +9,11 @@ namespace BookStore.Repository
 {
     public interface IProductRepository
     {
-        Task<Product> FindProduct(Expression<Func<Entity.Product, bool>> predicate = null);
-        Task<List<Entity.Product>> FindAllProduct(Expression<Func<Entity.Product, bool>> predicate = null);
+        Task<Product> FindProduct(Product addrequest);
+        Task<List<Product>> FindAllProduct(List<Product> addrequest);
         Task<Product> AddProduct(Product addrequest);
-        Task<bool> UpdateProduct(BookStore.Entity.Product addrequest);
+        void AddListOfProduct(List<Product> addrequest);
+        Task<List<Product>> UpdateProduct(List<Product> addrequest);
         Task<bool> DeleteProduct(int productid);
-        void AddListOfProduct(List<BookStore.Entity.Product> addrequest);
     }
 }

@@ -12,11 +12,11 @@
 
 //namespace BookStore.Repository
 //{
-//    public partial class BookRepository<T> : IBookRepository<T>
+//    public partial class BookRepository : IBookRepository
 //    {
 //        private readonly IMongoCollection<Book> _collection;
 
-//        public BookRepository(IMongoDbSettings settings)
+//        public BookRepository(MongoCollectionSettings settings)
 //        {
 //            var database = new MongoClient(settings.ConnectionString).GetDatabase(settings.DatabaseName);
 //            _collection = database.GetCollection<Book>(GetCollectionName(typeof(Book)));

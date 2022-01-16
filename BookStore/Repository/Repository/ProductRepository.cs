@@ -30,11 +30,12 @@ namespace BookStore.Repository
             _productRepository = database.GetCollection<Product>("Product");
         }
         #endregion
-        public void AddListOfProduct(Product addrequest)
+
+        public void AddListOfProduct(List<Product> addrequest)
         {
             try
             {
-                _productRepository.InsertOneAsync(addrequest);
+                _productRepository.InsertManyAsync(addrequest);
             }
             catch (Exception ex)
             {
@@ -43,16 +44,17 @@ namespace BookStore.Repository
             }
         }
 
-        public void AddProduct(Product addrequest)
+        public async Task<Product> AddProduct(Product addrequest)
         {
             try
             {
-                 _productRepository.InsertOne(addrequest);
+               await _productRepository.InsertOneAsync(addrequest);
             }
             catch (Exception ex)
             {
-                throw;
+                throw;   
             }
+            return(addrequest);
         }
 
         public async Task<bool> DeleteProduct(int productid)
@@ -63,45 +65,50 @@ namespace BookStore.Repository
             }
             catch (Exception ex)
             {
+
                 throw;
             }
         }
 
-        public async Task<List<Product>> FindAllProduct(Expression<Func<Product, bool>> predicate = null)
+        public async Task<List<Product>> FindAllProduct(List<Product> addrequest)
         {
             try
             {
-                return await _productRepository.InsertAsync(predicate);
+               await _productRepository.InsertManyAsync(addrequest);
             }
             catch (Exception ex)
             {
                 throw;
             }
+            return(addrequest);
         }
 
-        public async Task<Product> FindProduct(Expression<Func<Product, bool>> predicate = null)
+        public async Task<Product> FindProduct(Product addrequest)
         {
             try
             {
-                return await _productRepository.Find(predicate);
+                await _productRepository.InsertOneAsync(addrequest);
             }
             catch (Exception ex)
             {
+
                 throw;
             }
+            return(addrequest);
         }
 
-        public bool UpdateProduct(Product addrequest)
+        public async Task<List<Product>> UpdateProduct(List<Product> addrequest)
         {
             try
             {
-                _productRepository.UpdateOneAsync(addrequest);
-                return true;
+                await _productRepository.InsertManyAsync(addrequest);
             }
             catch (Exception ex)
             {
-                return false;
+
+                throw;
             }
+            return(addrequest);
         }
     }
 }

@@ -7,7 +7,7 @@
 
 //namespace BookStore.Repository
 //{
-//    public partial interface IBookRepository<T> 
+//    public partial interface IBookRepository<T>
 //    {
 
 //        /// <summary>
@@ -22,7 +22,7 @@
 //        ///// </summary>
 //        ///// <param name="id">Identifier</param>
 //        ///// <returns>Entity</returns>
-//       //T GetById(string id);
+//        //T GetById(string id);
 
 //        /// <summary>
 //        /// Get async entity by identifier 
